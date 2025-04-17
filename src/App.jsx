@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BlogPostList from './components/BlogPostList';
+import BlogPostDetail from './components/BlogPostDetail';
 import { samplePosts } from './mockData'; // Import mock data
 import './App.css'; // Keep general app styles if any
 
@@ -9,7 +10,14 @@ import './App.css'; // Keep general app styles if any
 const PostDetailPlaceholder = () => {
   // In a real app, you'd fetch post details based on URL params
   const postId = window.location.pathname.split('/').pop();
-  return <h2>Blog Post Detail (ID: {postId})</h2>;
+  const post = samplePosts[postId-1]
+  console.log(post);
+  return <BlogPostDetail 
+    title={post.title}
+    content={post.content}
+    author={post.author}
+    date={post.date}
+  />;
 }
 
 function App() {
